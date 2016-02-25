@@ -1,0 +1,78 @@
+random(a, b)
+  return unit(math(math(0, 'random') * (b - a + 1) + a, 'floor'), 's')
+
+@keyframes fade-alternate
+  0%
+  25%
+    opacity 1
+  30%
+  95%
+    opacity 0
+
+@keyframes jump
+  0%
+    transform translate(0, 0)
+  20%
+    transform translate(0, -4px)
+  80%
+    transform translate(0, 2px)
+  100%
+    transform translate(0, 0)
+
+@keyframes swing
+  0%
+    transform rotate(0deg)
+  20%
+    transform rotate(4deg)
+  40%
+    transform rotate(-3deg)
+  60%
+    transform rotate(2deg)
+  80%
+    transform rotate(-2deg)
+  100%
+    transform rotate(0deg)
+
+@keyframes small-swing
+  0%
+    transform rotate(0deg)
+  20%
+    transform rotate(3deg)
+  40%
+    transform rotate(-1.5deg)
+  60%
+    transform rotate(1.5deg)
+  80%
+    transform rotate(-1.5deg)
+  100%
+    transform rotate(0deg)
+
+@keyframes loader-rotate
+  100%
+    transform rotate(360deg)
+
+@keyframes loader-dash
+  0%
+    stroke-dasharray 1,200
+    stroke-dashoffset 0
+
+  50%
+    stroke-dasharray 89,200
+    stroke-dashoffset -35
+
+  100%
+    stroke-dasharray 89,200
+    stroke-dashoffset -124
+
+@keyframes loader-color
+  100%, 0%
+    stroke $color-red
+
+  40%
+    stroke $color-blue
+
+  66%
+    stroke $color-green
+
+  80%, 90%
+    stroke $color-yellow

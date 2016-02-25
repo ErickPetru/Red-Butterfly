@@ -1,0 +1,33 @@
+<template name="contato">
+  <form action="/" class="contato" novalidate>
+    <fieldset>
+      <legend>Fale conosco</legend>
+
+      <div class="field">
+        <input id="nome" required maxlength="50">
+        <label for="nome">Informe seu nome</label>
+      </div>
+
+      <div class="field">
+        <input id="email" required maxlength="250">
+        <label for="email">Informe seu e-mail</label>
+      </div>
+
+      <div class="field">
+        <textarea id="mensagem" required maxlength="2000"></textarea>
+        <label for="mensagem">Escreva sua mensagem</label>
+      </div>
+
+      <footer>
+        <span class="resultado"></span>
+        <input type="submit" title="Enviar mensagem" value="Enviar">
+
+        <div class="loader" hidden>
+          <svg viewBox="25 25 50 50">
+            <circle cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+          </svg>
+        </div>
+      </footer>
+    </fieldset>
+  </form>
+</template>
