@@ -1,0 +1,7 @@
+{
+  "name": "red-butterfly",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "meteor --settings settings.json"
+  }
+}

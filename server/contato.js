@@ -14,8 +14,8 @@ Meteor.methods({
     var text = "Nome: " + data.nome + "\n" + "Email: " + data.email + "\n\n" + data.mensagem;
 
     Email.send({
-      to: "joice@redbutterfly.com.br",
-      from: "joice@redbutterfly.com.br",
+      to: Meteor.settings.emailUsername,
+      from: Meteor.settings.emailUsername,
       replyTo: data.nome + "<" + data.email + ">",
       subject: "Contato por RedButterfly.com.br",
       text: text
@@ -26,6 +26,7 @@ Meteor.methods({
     check(address, String);
 
     var result = HTTP.get('https://api.mailgun.net/v2/address/validate', {
+      auth: Meteor.settings.mailgunKey,
       params: {
         address: address
       }
