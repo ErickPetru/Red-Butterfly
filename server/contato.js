@@ -4,7 +4,7 @@ Meteor.methods({
     check([data.nome, data.email, data.mensagem], [String]);
 
     if (!data.nome || !data.email || !data.mensagem)
-      throw new Meteor.Error("app", "Preencha todos os campos corretamente.");
+      throw new Meteor.Error("app", "Preencha todos os campos para enviar.");
 
     if (!Meteor.call("isEmailValid", data.email))
       throw new Meteor.Error("app", "Utilize um e-mail válido.");

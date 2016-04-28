@@ -21,7 +21,7 @@ Template.contato.events({
     resultado.empty().removeClass("error").removeClass("success");
 
     if (!data.nome || !data.email || !data.mensagem) {
-      resultado.text("Preencha todos os campos para prosseguir.").addClass("error");
+      resultado.text("Preencha todos os campos para enviar.").addClass("error");
       botao.prop("disabled", false).show();
       loader.hide();
 
