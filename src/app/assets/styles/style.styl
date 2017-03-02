@@ -1,0 +1,339 @@
+@import 'colors.styl'
+@import 'animations.styl'
+@import 's-grid-settings'
+@import 's-grid-functions'
+
+$tablet-breakpoint = 640px
+$desktop-breakpoint = 960px
+
+position-absolute(args...)
+  position absolute
+  top args[0] || 0
+  right args[1] || 0
+  bottom args[2] || 0
+  left args[3] || 0
+
+*, *::before, *::after
+  box-sizing border-box
+
+body
+  margin 0
+  font 400 1em/140% 'Roboto', Sans-serif;
+  color #333
+  scroll-behavior smooth
+
+.logo
+  display block
+  font-size 0
+  width 40vw
+  min-width 200px
+  .borboleta, .texto
+    display inline-block
+    width 47%
+    fill #fff
+    filter drop-shadow(0 7px 18px rgba(0, 0, 0, .75))
+    vertical-align bottom
+    transform rotate(0.001deg) scaleX(1.001) scaleY(1.001)
+    .interior
+      fill alpha($color-red-800, .6)
+    .corpo, .asas, .detalhe
+      fill #fff
+  .texto
+    width 53%
+    margin-left -9%
+  .borboleta
+    transform-origin 50% 50%
+    animation jump cubic-bezier(.65, .3, .35, .8) 1.5s .4s both
+    animation-iteration-count 1
+    .asas > *
+      transform-origin 100% 100%
+      animation swing ease-in 1.8s .6s both
+      animation-iteration-count 1
+    .asas .fundo
+      animation-delay .65s
+    .asas .traseira
+      transform-origin 105% 68%
+      animation-delay .6s
+    .antenas
+      transform-origin 50% 100%
+      animation small-swing ease-in .6s 1.2s both
+      animation-iteration-count 1
+      animation-play-state paused
+  &:hover
+    .asas > *
+    .antenas
+      animation-iteration-count infinite
+      animation-play-state running
+
+header
+  position relative
+  background $color-red-700
+  height 90vmin
+  z-index 1
+  grid('row', 'center', 'center')
+  .overlay
+    position-absolute()
+    background url('../assets/images/header.jpg') fixed center 3%
+    background-size cover
+  .logo
+    flex 0 0 auto
+    margin-top 4vmin
+    display block
+
+a
+  outline-color alpha($color-red, 0)
+  transition all .3s ease-in-out
+  &:focus
+    outline-color $color-red
+
+.introducao
+  position relative
+  z-index 2
+  .frases, .categorias
+    padding 2rem 1rem
+    background-color $color-red-600
+    text-align center
+    color #fff
+    p
+      margin .5rem 0 1rem
+      font-weight 300
+    ul
+      margin 0
+      font-size inherit
+      list-style none
+  .frases
+    grid('column', justify: 'center')
+    align-items center
+    background-image url('../assets/images/borboleta.svg')
+    background-repeat no-repeat
+    background-position -70px center;
+    background-size auto 150%
+    p
+      margin .25rem 0
+      font 400 italic 3.9vw/140% 'Coming Soon', Cursive;
+      text-shadow 0 1px 3px $color-red-600
+  .categorias
+    background-color $color-red-700
+
+  @media (min-width $tablet-breakpoint)
+    grid(cells-align: 'stretch')
+    font-size 1.25rem
+    .frases, .categorias
+      cell(1, 2, g: 0)
+    .frases p
+        font-size 2vw
+
+main
+  position relative
+  z-index 2
+
+.social
+  padding 2rem 1rem
+  background #fff
+  font-size 1.5rem
+  ul
+    grid()
+    margin 0
+    list-style none
+    li
+      flex 1 0 auto
+      text-align center
+      padding .5rem 1rem
+      a
+        display inline-block
+        color inherit
+        text-decoration none
+        white-space nowrap
+        font-weight 300
+        height 2rem
+        line-height 2rem
+        background-repeat no-repeat
+        background-size contain
+        padding-left calc(2rem + 4px)
+      &:hover
+        color $color-red
+      a em
+          font-style normal
+          font-weight 400
+  .facebook a
+    background-image url('../assets/images/facebook.svg')
+  .instagram a
+    background-image url('../assets/images/instagram.svg')
+  .whatsapp a
+    background-image url('../assets/images/whatsapp.svg')
+  .email a
+    background-image url('../assets/images/email.svg')
+
+.informacoes
+  background $color-grey-100
+  .contato
+    padding 2rem
+  .mapa
+    position relative
+    padding-bottom 70%
+    overflow hidden
+    iframe
+      position absolute
+      top 0
+      left 0
+      width 100% !important
+      height 100% !important
+  @media (min-width $tablet-breakpoint)
+    grid(cells-align: 'stretch')
+    .contato, .mapa
+      cell(1, 2, g: 0)
+    .mapa
+      padding-bottom 30%
+
+fieldset
+  border none
+  grid('column')
+  legend
+    font-weight 500
+    text-shadow none
+  footer
+    grid('row', 'center', 'center')
+    justify-content space-between
+    span
+      font-size 1.125rem
+      font-weight 500
+      min-height 2.57em
+      letter-spacing 0
+      line-height 2.57em
+.field
+  position relative
+  margin 1.75em 0 1em
+textarea
+  min-height 5em
+  resize vertical
+
+input:not([type])
+input[type='text']
+textarea
+  border none
+  border-bottom 2px solid alpha(#000, .12)
+  font inherit
+  font-size 1.125rem
+  padding 6px 4px
+  width 100%
+  background #fff
+  text-align left
+  color transparent
+  outline 0
+  transition border-color .2s cubic-bezier(.4, 0, .2, 1), color .4s cubic-bezier(.4, 0, .2, 1)
+  &:focus
+    border-bottom 2px solid $color-blue-grey
+  & + label
+    color alpha(#000, .26)
+    display block
+    overflow hidden
+    pointer-events none
+    position absolute
+    text-align left
+    font-size 1.125rem
+    transition all .2s cubic-bezier(.4, 0, .2, 1)
+    white-space nowrap
+    width calc(100% - 1em)
+    top 6px
+    left 4px
+    right 0
+    z-index 1
+  &:focus + label
+    color $color-blue-grey
+    font-size .75em
+    top -1.75em
+    left 0
+  &:valid
+  &:focus:invalid
+    color inherit
+  &:not(:focus):valid + label
+    color $color-blue-grey
+    font-size .75em
+    top -1.75em
+    left 0
+
+button
+input[type='submit']
+  background $color-blue-grey
+  border none
+  border-radius 2px
+  color #fff
+  cursor pointer
+  font-size 1.125rem
+  font-weight 500
+  height 2.57em
+  letter-spacing 0
+  line-height 2.57em
+  margin-left 1em
+  outline 0
+  padding 0 1em
+  text-align center
+  text-transform uppercase
+  transition:
+    box-shadow .2s cubic-bezier(.4, 0, 1, 1),
+    background-color .2s cubic-bezier(.4, 0, .2, 1),
+    color .2s cubic-bezier(.4, 0, .2, 1)
+  vertical-align middle
+  white-space nowrap
+  &:first-of-type
+    margin-left 0
+  &:hover
+    background-color $color-blue-grey-700
+  &:active
+    background-color $color-blue-grey-800
+  &:focus:not(:active)
+    background-color $color-blue-grey-700
+.error
+  color $color-red-A400
+.success
+  color $color-green
+
+#app > footer
+  background $color-blue-grey-900
+  font-weight 300
+  padding 3rem 1rem 2rem
+  grid('column', justify: 'center')
+  align-items center
+  text-align center
+  p
+    font-size .75rem
+    color alpha(#fff, .7)
+    &:first-of-type
+      font-size .875rem
+      margin-top .75rem
+      color alpha(#fff, .9)
+  .logo
+    width 12rem
+    min-width 12rem
+    margin-left -1rem
+    opacity .9
+    .borboleta, .texto
+      filter none
+    .interior
+        fill $color-blue-grey-800
+
+.loader
+  position relative
+  margin 0px auto
+  width 2.5em
+
+  &::before
+    content ''
+    display block
+    padding-top 100%
+
+  svg
+    animation loader-rotate 2s linear infinite
+    height 100%
+    transform-origin center center
+    width 100%
+    margin auto
+    position-absolute()
+
+    circle
+      stroke-dasharray 1,200
+      stroke-dashoffset 0
+      animation:
+        loader-dash 1.5s ease-in-out infinite,
+        loader-color 6s ease-in-out infinite;
+      stroke-linecap round
