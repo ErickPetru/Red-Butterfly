@@ -1,10 +1,12 @@
 <script>
 import Logo from './logo.vue'
+import Index from './index.vue'
 
 export default {
   name: 'app',
   components: {
-    Logo
+    Logo,
+    Index
   }
 }
 </script>
@@ -19,7 +21,7 @@ export default {
       </h1>
     </header>
 
-    ...
+    <index></index>
 
     <footer>
       <h2 class="logo">

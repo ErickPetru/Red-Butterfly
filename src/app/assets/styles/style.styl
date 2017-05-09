@@ -68,7 +68,7 @@ body
 header
   position relative
   background $color-red-700
-  height 90vmin
+  height 80vmin
   z-index 1
   grid('row', 'center', 'center')
   .overlay
@@ -91,7 +91,7 @@ a
   z-index 2
   .frases, .categorias
     padding 2rem 1rem
-    background-color $color-red-600
+    background-color $color-blue-grey-800
     text-align center
     color #fff
     p
@@ -111,10 +111,9 @@ a
     p
       margin .25rem 0
       font 400 italic 3.9vw/140% 'Coming Soon', Cursive;
-      text-shadow 0 1px 3px $color-red-600
+      text-shadow 0 1px 3px $color-blue-grey-900
   .categorias
-    background-color $color-red-700
-
+    background-color $color-blue-grey-900
   @media (min-width $tablet-breakpoint)
     grid(cells-align: 'stretch')
     font-size 1.25rem
@@ -170,7 +169,7 @@ main
     padding 2rem
   .mapa
     position relative
-    padding-bottom 70%
+    padding-bottom 25%
     overflow hidden
     iframe
       position absolute
@@ -178,12 +177,6 @@ main
       left 0
       width 100% !important
       height 100% !important
-  @media (min-width $tablet-breakpoint)
-    grid(cells-align: 'stretch')
-    .contato, .mapa
-      cell(1, 2, g: 0)
-    .mapa
-      padding-bottom 30%
 
 fieldset
   border none
